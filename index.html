@@ -1,0 +1,339 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Needle Gap</title>
+  <meta name="description" content="Needle Gap is a clean one-tap timing puzzle for iPhone and iPad with 50 offline levels.">
+  <style>
+    :root {
+      color-scheme: light;
+      --ink: #090909;
+      --muted: #5f6268;
+      --line: #dadde3;
+      --paper: #ffffff;
+      --soft: #f5f6f8;
+      --accent: #0b65c2;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      background: var(--paper);
+      color: var(--ink);
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      line-height: 1.55;
+    }
+
+    a {
+      color: inherit;
+      text-decoration-thickness: 0.08em;
+      text-underline-offset: 0.18em;
+    }
+
+    header {
+      border-bottom: 1px solid var(--line);
+      background: var(--paper);
+    }
+
+    nav,
+    main,
+    footer {
+      width: min(1120px, calc(100% - 40px));
+      margin: 0 auto;
+    }
+
+    nav {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      min-height: 68px;
+      gap: 20px;
+    }
+
+    .brand {
+      font-weight: 800;
+      font-size: 20px;
+      letter-spacing: 0;
+    }
+
+    .links {
+      display: flex;
+      align-items: center;
+      gap: 18px;
+      color: var(--muted);
+      font-size: 14px;
+      font-weight: 650;
+    }
+
+    .hero {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) minmax(280px, 420px);
+      gap: clamp(32px, 6vw, 72px);
+      align-items: center;
+      padding: clamp(56px, 9vw, 104px) 0 64px;
+    }
+
+    h1 {
+      margin: 0;
+      max-width: 720px;
+      font-size: clamp(52px, 9vw, 112px);
+      line-height: 0.92;
+      letter-spacing: 0;
+    }
+
+    .lead {
+      max-width: 660px;
+      margin: 28px 0 0;
+      color: var(--muted);
+      font-size: clamp(18px, 2.3vw, 24px);
+    }
+
+    .actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 14px;
+      margin-top: 34px;
+    }
+
+    .button {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 48px;
+      padding: 0 22px;
+      border: 2px solid var(--ink);
+      border-radius: 8px;
+      font-weight: 800;
+      text-decoration: none;
+    }
+
+    .button.primary {
+      background: var(--ink);
+      color: var(--paper);
+    }
+
+    .phone-preview {
+      width: min(100%, 360px);
+      margin-left: auto;
+      border: 2px solid var(--ink);
+      border-radius: 8px;
+      background: var(--paper);
+      overflow: hidden;
+      box-shadow: 0 18px 44px rgba(0, 0, 0, 0.12);
+    }
+
+    .phone-preview img {
+      display: block;
+      width: 100%;
+      height: auto;
+    }
+
+    section {
+      padding: 72px 0;
+      border-top: 1px solid var(--line);
+    }
+
+    h2 {
+      margin: 0 0 18px;
+      font-size: clamp(30px, 4vw, 48px);
+      line-height: 1.05;
+      letter-spacing: 0;
+    }
+
+    .section-copy {
+      max-width: 760px;
+      color: var(--muted);
+      font-size: 18px;
+      margin: 0;
+    }
+
+    .features {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 1px;
+      margin-top: 34px;
+      background: var(--line);
+      border: 1px solid var(--line);
+    }
+
+    .feature {
+      background: var(--paper);
+      padding: 24px;
+      min-height: 150px;
+    }
+
+    .feature strong {
+      display: block;
+      font-size: 18px;
+      margin-bottom: 10px;
+    }
+
+    .feature span {
+      color: var(--muted);
+      font-size: 15px;
+    }
+
+    .screens {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 18px;
+      margin-top: 34px;
+    }
+
+    .screens img {
+      display: block;
+      width: 100%;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: var(--soft);
+    }
+
+    .policy-strip {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 22px;
+      padding: 26px;
+      background: var(--soft);
+      border: 1px solid var(--line);
+      border-radius: 8px;
+    }
+
+    .policy-strip p {
+      margin: 0;
+      color: var(--muted);
+    }
+
+    footer {
+      padding: 32px 0 44px;
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    @media (max-width: 860px) {
+      nav {
+        align-items: flex-start;
+        flex-direction: column;
+        padding: 18px 0;
+      }
+
+      .hero {
+        grid-template-columns: 1fr;
+        padding-top: 44px;
+      }
+
+      .phone-preview {
+        margin-left: 0;
+      }
+
+      .features,
+      .screens {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+
+      .policy-strip {
+        align-items: flex-start;
+        flex-direction: column;
+      }
+    }
+
+    @media (max-width: 520px) {
+      nav,
+      main,
+      footer {
+        width: min(100% - 28px, 1120px);
+      }
+
+      .links {
+        width: 100%;
+        justify-content: space-between;
+      }
+
+      .features,
+      .screens {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <nav aria-label="Main navigation">
+      <div class="brand">Needle Gap</div>
+      <div class="links">
+        <a href="#features">Features</a>
+        <a href="#screenshots">Screenshots</a>
+        <a href="privacy.html">Privacy</a>
+      </div>
+    </nav>
+  </header>
+
+  <main>
+    <section class="hero" aria-labelledby="hero-title">
+      <div>
+        <h1 id="hero-title">Needle Gap</h1>
+        <p class="lead">A sharp one-tap timing puzzle. Thread every pin into a spinning target, avoid collisions, and clear 50 offline levels.</p>
+        <div class="actions">
+          <a class="button primary" href="#screenshots">View Screenshots</a>
+          <a class="button" href="privacy.html">Privacy Policy</a>
+        </div>
+      </div>
+      <figure class="phone-preview">
+        <img src="AppStoreSubmission/screenshots/iphone_6_9_1320x2868/01_iphone_6_9_1320x2868.png" alt="Needle Gap gameplay screen">
+      </figure>
+    </section>
+
+    <section id="features" aria-labelledby="features-title">
+      <h2 id="features-title">Simple Rules, Sharp Timing</h2>
+      <p class="section-copy">Tap to fire a pin. Hit an open gap. Miss the pins already attached to the rotating core. Needle Gap keeps the controls simple and lets speed, spacing, and rhythm create the challenge.</p>
+      <div class="features" aria-label="Game features">
+        <div class="feature">
+          <strong>50 Levels</strong>
+          <span>A complete offline campaign with steadily increasing difficulty.</span>
+        </div>
+        <div class="feature">
+          <strong>One-Tap Play</strong>
+          <span>Built for quick sessions, clean input, and immediate retries.</span>
+        </div>
+        <div class="feature">
+          <strong>Local Progress</strong>
+          <span>Level unlocks, stars, and settings are stored on the device.</span>
+        </div>
+        <div class="feature">
+          <strong>No Distractions</strong>
+          <span>No login, no ads, no in-app purchases, and no network features.</span>
+        </div>
+      </div>
+    </section>
+
+    <section id="screenshots" aria-labelledby="screenshots-title">
+      <h2 id="screenshots-title">Screenshots</h2>
+      <p class="section-copy">Minimal black-and-white visuals keep attention on the rotating target, the remaining pins, and the timing window.</p>
+      <div class="screens">
+        <img src="AppStoreSubmission/screenshots/iphone_6_9_1320x2868/01_iphone_6_9_1320x2868.png" alt="Needle Gap main menu">
+        <img src="AppStoreSubmission/screenshots/iphone_6_9_1320x2868/02_iphone_6_9_1320x2868.png" alt="Needle Gap level select">
+        <img src="AppStoreSubmission/screenshots/iphone_6_9_1320x2868/03_iphone_6_9_1320x2868.png" alt="Needle Gap gameplay with pins">
+        <img src="AppStoreSubmission/screenshots/iphone_6_9_1320x2868/04_iphone_6_9_1320x2868.png" alt="Needle Gap result screen">
+      </div>
+    </section>
+
+    <section aria-labelledby="privacy-summary-title">
+      <div class="policy-strip">
+        <div>
+          <h2 id="privacy-summary-title">Privacy First</h2>
+          <p>Needle Gap is fully offline. It does not collect personal data, track users, display ads, or connect to external servers.</p>
+        </div>
+        <a class="button" href="privacy.html">Read Policy</a>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <p>© 2026 Dataeye. All rights reserved.</p>
+  </footer>
+</body>
+</html>
